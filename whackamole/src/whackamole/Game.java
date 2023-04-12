@@ -5,7 +5,7 @@ import java.awt.event.*;
 import java.awt.image.BufferedImage;
 
 
-public class Game extends JPanel implements Runnable, MouseListener{
+public class Game extends JPanel implements Runnable, MouseListener, MouseMotionListener{
 	private BufferedImage back;
 	private ImageIcon bg, mole;
 	private boolean draw;
@@ -14,8 +14,10 @@ public class Game extends JPanel implements Runnable, MouseListener{
 	
 	public Game() {
 		back=null;
+		new Thread(this).start();	
 		this.addMouseListener(this);
-		bg = new ImageIcon("bg.png");
+		this.addMouseMotionListener(this);
+		bg = new ImageIcon("grass.png");
 		mole = new ImageIcon("mole.png");
 		draw = true;
 		mx = 200;
@@ -54,17 +56,55 @@ public class Game extends JPanel implements Runnable, MouseListener{
 		timer = (System.currentTimeMillis()-time)/1000;
 		
 		//START CODING GRAPHICS HERE
+		
 		g2d.drawImage(bg.getImage(), 0,0, 1000, 1000, this);
 		g2d.drawImage(mole.getImage(), mx, my, 200, 200, this);
+		
+		g2d.setColor(Color.black);
+		g2d.fillRect(50,  87,  67,  15);
+		twoDgraph.drawImage(back, 0, 0, null);
+		
+		g2d.setColor(Color.white);
+		g2d.fillRect(0,  0,  6777,  80);
+		twoDgraph.drawImage(back, 0, 0, null);
+		
+		
 		g2d.setColor(Color.red);
-		g2d.drawString(String.valueOf(timer), 100,100);
+		g2d.drawString(timer+"", 100,100);
 		
 			//g2d.drawImage(mole.getImage(), 100,100, 200, 200, this);
+		Color LIGHTBROWN = new Color(135,108,25);
+		g2d.setColor(LIGHTBROWN);
+		g2d.setFont(new Font ("Times", Font.BOLD, 60));
+		g2d.drawString("WHACK THE VOULIS!™",60, 60);
+		Color LIGHTBROWN2 = new Color(175,108,25);
+		g2d.setColor(LIGHTBROWN2);
+		g2d.setFont(new Font ("Times", Font.BOLD, 60));
+		g2d.drawString("WHACK THE VOULIS!™",57, 58);
+		
+		
+		Color white = new Color(255,255,255);
+		g2d.setColor(white);
+		g2d.setFont(new Font ("Times", Font.BOLD, 12));
+		g2d.drawString("score =",52, 100);
+		
+		drawCircle(g2d);
+		Color BLACK = new Color(0,0,0);
+		g2d.setColor(BLACK);
+		
+		
+		
 		
 System.out.print(mx);
 		//This line tells the program to draw everything above. If you delete this, nothing will show up.
 		twoDgraph.drawImage(back, 0, 0, null);
 	}
+
+	private void drawCircle(Graphics g2d) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 	public int getRandomNumber() {
 	    return (int) ((Math.random() * (500 - 100)) + 100);
@@ -109,6 +149,29 @@ System.out.print(mx);
 	
 	
 	}
+
+
+	@Override
+	public void mouseDragged(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void mouseMoved(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+		
+		
+	
+			
+
+		
 }
+
+
 
 
