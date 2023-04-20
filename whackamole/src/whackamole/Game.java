@@ -58,14 +58,40 @@ public class Game extends JPanel implements Runnable, MouseListener, MouseMotion
 		//START CODING GRAPHICS HERE
 		
 		g2d.drawImage(bg.getImage(), 0,0, 1000, 1000, this);
-		g2d.drawImage(mole.getImage(), mx, my, 200, 200, this);
+		g2d.drawImage(mole.getImage(), mx, my, 100, 100, this);
+		
+		//grid
+				Color BROWN = new Color(101,67,33);
+				g2d.setColor(BROWN);
+				g2d.fillRect(130,  0,  10,  8000);
+				g2d.fillRect(260,  0,  10,  8000);
+				g2d.fillRect(380,  0,  10,  8000);
+				g2d.fillRect(510,  0,  10,  8000);
+				g2d.fillRect(640,  0,  10,  8000);
+				g2d.fillRect(0,  200,  8000, 10  );
+				g2d.fillRect(0,  330,  8000, 10  );
+				g2d.fillRect(0,  460,  8000, 10  );
+				
+				
+				
+				
+				
+				
+		Color LIGHTBLUE = new Color(135,206,235);
+		g2d.setColor(LIGHTBLUE);
+		g2d.fillRect(0,  80,  1000,  25);
+		
 		
 		g2d.setColor(Color.black);
-		g2d.fillRect(50,  87,  67,  15);
+		g2d.fillRect(50,  87,  69,  15);
 		twoDgraph.drawImage(back, 0, 0, null);
 		
 		g2d.setColor(Color.white);
 		g2d.fillRect(0,  0,  6777,  80);
+	
+		
+		
+		
 		twoDgraph.drawImage(back, 0, 0, null);
 		
 		
