@@ -25,7 +25,19 @@ public class Game extends JPanel implements Runnable, MouseListener, MouseMotion
 		time = System.currentTimeMillis();
 		
 	}
-	
+	public void restart() {
+		back=null;
+		new Thread(this).start();	
+		this.addMouseListener(this);
+		this.addMouseMotionListener(this);
+		bg = new ImageIcon("grass.png");
+		mole = new ImageIcon("mole.png");
+		draw = true;
+		mx = 200;
+		my = 200;
+		time = System.currentTimeMillis();
+		
+	}
 	
 	public void run() {
 		try {
@@ -53,7 +65,6 @@ public class Game extends JPanel implements Runnable, MouseListener, MouseMotion
 		//this clears the old image, like an EtchASketch. If you see the old image when we learn motion, you deleted this line.
 		g2d.clearRect(0, 0, getSize().width, getSize().height); 
 		
-		timer = (System.currentTimeMillis()-time)/1000;
 		
 		//START CODING GRAPHICS HERE
 		
@@ -95,18 +106,17 @@ public class Game extends JPanel implements Runnable, MouseListener, MouseMotion
 		twoDgraph.drawImage(back, 0, 0, null);
 		
 		
-		g2d.setColor(Color.red);
-		g2d.drawString(timer+"", 100,100);
+		gameTimer(g2d);
 		
 			//g2d.drawImage(mole.getImage(), 100,100, 200, 200, this);
 		Color LIGHTBROWN = new Color(135,108,25);
 		g2d.setColor(LIGHTBROWN);
 		g2d.setFont(new Font ("Times", Font.BOLD, 60));
-		g2d.drawString("WHACK THE VOULIS!™",60, 60);
+		g2d.drawString("WHACK THE VOULIS!ï¿½",60, 60);
 		Color LIGHTBROWN2 = new Color(175,108,25);
 		g2d.setColor(LIGHTBROWN2);
 		g2d.setFont(new Font ("Times", Font.BOLD, 60));
-		g2d.drawString("WHACK THE VOULIS!™",57, 58);
+		g2d.drawString("WHACK THE VOULIS!ï¿½",57, 58);
 		
 		
 		Color white = new Color(255,255,255);
@@ -114,7 +124,6 @@ public class Game extends JPanel implements Runnable, MouseListener, MouseMotion
 		g2d.setFont(new Font ("Times", Font.BOLD, 12));
 		g2d.drawString("score =",52, 100);
 		
-		drawCircle(g2d);
 		Color BLACK = new Color(0,0,0);
 		g2d.setColor(BLACK);
 		//test
@@ -126,9 +135,23 @@ System.out.print(mx);
 		twoDgraph.drawImage(back, 0, 0, null);
 	}
 
-	private void drawCircle(Graphics g2d) {
-		// TODO Auto-generated method stub
+	private void gameTimer(Graphics g2d) {
+		timer = (System.currentTimeMillis() - time) / 1000;
+		g2d.setColor(Color.RED);
+		g2d.setFont(new Font("Times", Font.BOLD, 100));
+		g2d.drawString(String.valueOf(timer), 100, 100);
+
+		if(timer == 20) {
+			timeOver(g2d);
 		
+		} else if (timer > 21) {
+			restart();
+		}
+	}
+
+	private void timeOver(Graphics g2d) {
+		g2d.drawString("Hey you ran out of time, sorry :(", 200, 200);
+
 	}
 
 
