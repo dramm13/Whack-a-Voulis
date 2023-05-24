@@ -221,14 +221,7 @@ System.out.print(mx);
 	public void mouseMoved(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
-	}
-
-		
-		
-	
-			
-
-		
+	}		
 }
 
 
