@@ -137,7 +137,7 @@ System.out.print(mx);
 		timer = (System.currentTimeMillis() - time) / 1000;
 		g2d.setColor(Color.RED);
 		g2d.setFont(new Font("Times", Font.BOLD, 40));
-		g2d.drawString(String.valueOf(timer), 20, 100);
+		g2d.drawString(String.valueOf("Time: " + timer), 500, 100);
 
 		if(timer == 20) {
 			timeOver(g2d);
