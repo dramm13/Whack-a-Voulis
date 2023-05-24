@@ -111,7 +111,6 @@ public class Game extends JPanel implements Runnable, MouseListener, MouseMotion
 		
 		twoDgraph.drawImage(back, 0, 0, null);
 		gameTimer(g2d);
-		g2d.drawString("Clicks= " + clickCount, 180, 100);
 
 		
 			//g2d.drawImage(mole.getImage(), 100,100, 200, 200, this);
@@ -129,6 +128,8 @@ public class Game extends JPanel implements Runnable, MouseListener, MouseMotion
 		g2d.setColor(white);
 		g2d.setFont(new Font ("Times", Font.BOLD, 12));
 		g2d.drawString("score =",52, 100);
+		g2d.drawString("Clicks= " + clickCount, 180, 100);
+
 		
 		Color BLACK = new Color(0,0,0);
 		g2d.setColor(BLACK);
