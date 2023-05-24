@@ -11,7 +11,8 @@ public class Game extends JPanel implements Runnable, MouseListener, MouseMotion
 	private boolean draw;
 	private int mx, my;
 	private long time, timer;
-	
+	private int clickCount;
+
 	public Game() {
 		back=null;
 		new Thread(this).start();	
@@ -23,6 +24,8 @@ public class Game extends JPanel implements Runnable, MouseListener, MouseMotion
 		mx = 200;
 		my = 200;
 		time = System.currentTimeMillis();
+		clickCount = 0;
+
 		
 	}
 	public void restart() {
@@ -36,6 +39,8 @@ public class Game extends JPanel implements Runnable, MouseListener, MouseMotion
 		mx = 200;
 		my = 200;
 		time = System.currentTimeMillis();
+		clickCount = 0;
+
 		
 	}
 	
@@ -91,6 +96,7 @@ public class Game extends JPanel implements Runnable, MouseListener, MouseMotion
 		Color LIGHTBLUE = new Color(135,206,235);
 		g2d.setColor(LIGHTBLUE);
 		g2d.fillRect(0,  80,  1000,  25);
+
 		
 		
 		g2d.setColor(Color.black);
@@ -105,6 +111,8 @@ public class Game extends JPanel implements Runnable, MouseListener, MouseMotion
 		
 		twoDgraph.drawImage(back, 0, 0, null);
 		gameTimer(g2d);
+		g2d.drawString("Clicks= " + clickCount, 180, 100);
+
 		
 			//g2d.drawImage(mole.getImage(), 100,100, 200, 200, this);
 		Color LIGHTBROWN = new Color(135,108,25);
@@ -163,10 +171,13 @@ System.out.print(mx);
 	
 	@Override
 	public void mouseClicked(MouseEvent e) {
+		clickCount++;
+
 		// TODO Auto-generated method stub
 		if(e.getX()<mx+200&&e.getX()>mx&&e.getY()<my+200&&e.getY()>my) {
 			System.out.print("hit");
 			move();
+
 		}
 	}
 
