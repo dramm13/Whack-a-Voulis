@@ -104,8 +104,6 @@ public class Game extends JPanel implements Runnable, MouseListener, MouseMotion
 		
 		
 		twoDgraph.drawImage(back, 0, 0, null);
-		
-		
 		gameTimer(g2d);
 		
 			//g2d.drawImage(mole.getImage(), 100,100, 200, 200, this);
@@ -138,8 +136,8 @@ System.out.print(mx);
 	private void gameTimer(Graphics g2d) {
 		timer = (System.currentTimeMillis() - time) / 1000;
 		g2d.setColor(Color.RED);
-		g2d.setFont(new Font("Times", Font.BOLD, 100));
-		g2d.drawString(String.valueOf(timer), 100, 100);
+		g2d.setFont(new Font("Times", Font.BOLD, 40));
+		g2d.drawString(String.valueOf(timer), 20, 100);
 
 		if(timer == 20) {
 			timeOver(g2d);
@@ -150,7 +148,7 @@ System.out.print(mx);
 	}
 
 	private void timeOver(Graphics g2d) {
-		g2d.drawString("Hey you ran out of time, sorry :(", 200, 200);
+		g2d.drawString("Hey you ran out of time, sorry :(", 50, 200);
 
 	}
 
